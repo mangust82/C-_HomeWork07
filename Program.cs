@@ -20,13 +20,17 @@ PrintElement(m, n, MyArray);*/
 
 // Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
-int[,] MyArray = GetIntArray(4, 10);
+/*int[,] MyArray = GetIntArray(4, 10);
 PrintIntArray(MyArray);
 double[] Avg = AverageArray(MyArray);
 Console.WriteLine("Среднее по столбцам");
-Console.WriteLine(String.Join(", ", Avg));
+Console.WriteLine(String.Join(", ", Avg));*/
 
+// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет 
+// построчно выводить массив, добавляя индексы каждого элемента.Массив размером 2 x 2 x 2
 
+int[,,] myarr = GetThreeArray(2,2,2);
+PrintThreeArray(myarr);
 
 void PrintArray(double[,] matr)
 {
@@ -101,4 +105,35 @@ double[] AverageArray(int[,] array)
         AvgArr[j] = Math.Round(avg, 4);
     }
     return AvgArr;
+}
+
+int[,,] GetThreeArray(int m, int n, int p)
+{
+    int[,,] array = new int[m, n, p];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            for (int k=0; k < p; k++)
+            {
+                array[i, j, k] = new Random().Next(10, 100);
+            }
+        }
+    }
+    return array;
+}
+
+void PrintThreeArray(int [,,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                Console.Write($"{array[i,j,k]}({i},{j},{k}) ");
+            }
+        }
+        Console.WriteLine();
+    }
 }
